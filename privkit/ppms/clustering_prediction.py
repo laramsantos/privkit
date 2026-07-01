@@ -6,13 +6,11 @@ from privkit.utils import geo_utils as gu, constants
 
 class ClusteringPrediction(PPM):
     """
-    Prediction-aware Clustering Geo-indistinguishability class to apply the mechanism
-
+    Prediction-based Clustering Geo-indistinguishability class to apply the mechanism
     Builds on Clustering Geo-Ind: consecutive points flagged as `close_points` are
     grouped into a segment, the segment centroid is obfuscated once with Planar
     Laplace, and that single obfuscated location is assigned to every point in the
     segment. Points that are not part of a segment are obfuscated individually.
-
     References
     ----------
     Cunha, M., Mendes, R., & Vilela, J. P. (2019, October). Clustering Geo-Indistinguishability
@@ -20,8 +18,8 @@ class ClusteringPrediction(PPM):
     Security (ICCCS) (pp. 1-8). IEEE.
     """
     PPM_ID = "clustering_pred"
-    PPM_NAME = "Clustering Geo-indistinguishability"
-    PPM_INFO = "Prediction-aware clustering geo-indistinguishability groups consecutive predicted close points into " \
+    PPM_NAME = "Prediction-based Clustering Geo-indistinguishability"
+    PPM_INFO = "Prediction-based clustering geo-indistinguishability groups consecutive predicted close points into " \
                "a single obfuscation cluster. The cluster centroid is obfuscated once with Planar Laplace and the " \
                "resulting location is shared by every point in the cluster, while remaining points are obfuscated " \
                "individually. This mechanism is suitable for continuous scenarios."
@@ -33,18 +31,15 @@ class ClusteringPrediction(PPM):
 
     def __init__(self, epsilon: float):
         """
-        Initializes the prediction-aware Clustering Geo-Ind mechanism by defining the privacy parameter epsilon
-
+        Initializes the prediction-based Clustering Geo-Ind mechanism by defining the privacy parameter epsilon
         :param float epsilon: privacy parameter
         """
         super().__init__()
-        self.epsilon = float(epsilon)
-        self.obfuscated_points = []
+        self.epsilon = epsilon
 
     def execute(self, location_data: LocationData):
         """
-        Executes the prediction-aware Clustering Geo-Ind mechanism to the data given as parameter
-
+        Executes the prediction-based Clustering Geo-Ind mechanism to the data given as parameter
         :param privkit.LocationData location_data: location data where the planar laplace should be executed
         :return: location data with obfuscated latitude and longitude and the quality loss metric
         """
@@ -103,7 +98,6 @@ class ClusteringPrediction(PPM):
     def get_obfuscated_point(self, latitude: float, longitude: float, i: int = 0):
         """
         Returns a geo-indistinguishable single point
-
         :param float latitude: original latitude
         :param float longitude: original longitude
         :param int i: timestamp
@@ -112,5 +106,4 @@ class ClusteringPrediction(PPM):
         planar_laplace = PlanarLaplace(self.epsilon)
         obf_latitude, obf_longitude, distance = planar_laplace.get_obfuscated_point(latitude, longitude)
 
-        self.obfuscated_points.append([obf_latitude, obf_longitude])
         return obf_latitude, obf_longitude, distance
