@@ -1,7 +1,6 @@
 from .ppm import PPM
 from .planar_laplace import PlanarLaplace
 from .adaptive_geo_ind import AdaptiveGeoInd
-from .gem_adap_eps import GEM_with_adaptive_epsilon
 from .tppm_hmm import TrajectoryPrivacyProtectionHMM
 from .clustering_prediction import ClusteringPrediction
 from .centroid_voxel import CentroidVoxel
