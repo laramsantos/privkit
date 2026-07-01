@@ -3,6 +3,7 @@ from .planar_laplace import PlanarLaplace
 from .adaptive_geo_ind import AdaptiveGeoInd
 from .clustering_prediction import ClusteringPrediction
 from .centroid_voxel import CentroidVoxel
+from .tppm_hmm import TrajectoryPrivacyProtectionHMM
 from .clustering_geo_ind import ClusteringGeoInd
 from .hash import Hash
 from .laplace import Laplace

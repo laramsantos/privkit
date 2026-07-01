@@ -24,7 +24,7 @@ class TrajectoryPrivacyProtectionHMM(PPM):
     Qiu et al., Expert Systems with Applications, 213, 118870.
     """
 
-    PPM_ID = "tppm-hmm"
+    PPM_ID = "hmm_tppm"
     PPM_NAME = "Trajectory Privacy Protection (HMM-based)"
     PPM_INFO = "Uses an HMM to estimate location predictability, then allocates privacy budget dynamically."
     PPM_REF = "Qiu et al., Expert Systems with Applications, 213, 118870"
