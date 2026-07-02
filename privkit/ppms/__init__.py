@@ -3,6 +3,7 @@ from .planar_laplace import PlanarLaplace
 from .adaptive_geo_ind import AdaptiveGeoInd
 from .centroid_voxel import CentroidVoxel
 from .clustering_geo_ind import ClusteringGeoInd
+from .gem_variations import GEMVariations
 from .hash import Hash
 from .laplace import Laplace
 from .merge_two_faces import Merge2Faces
@@ -20,6 +21,7 @@ __all__ = [
     "AdaptiveGeoInd",
     "CentroidVoxel",
     "ClusteringGeoInd",
+    "GEMVariations",
     "Hash",
     "Laplace",
     "Merge2Faces",
